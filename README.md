@@ -1,3 +1,10 @@
+My fork of `zsh-vi-mode`.
+
+To set upstream remote to original zsh-vi-mode repo:
+```sh
+git remote add upstream git@github.com:jeffreytse/zsh-vi-mode.git
+```
+
 <div align="center">
   <a href="https://github.com/jeffreytse/zsh-vi-mode">
     <img alt="vi-mode →~ zsh" src="https://user-images.githubusercontent.com/9413601/103399068-46bfcb80-4b7a-11eb-8741-86cff3d85a69.png" width="600">
