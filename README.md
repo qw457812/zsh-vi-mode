@@ -1,4 +1,4 @@
-# My fork of [`zsh-vi-mode`](https://github.com/jeffreytse/zsh-vi-mode) with **system clipboard support**.
+# My fork of [`zsh-vi-mode`](https://github.com/jeffreytse/zsh-vi-mode) with **system clipboard support**
 
 > To set upstream remote to original zsh-vi-mode repo:
 > ```sh
@@ -10,7 +10,7 @@ System Clipboard
 
 Yank/delete/change to clipboard, paste(put) and replace from clipboard.
 
-You can disable this feature by `ZVM_USE_SYSTEM_CLIPBOARD` option (Default is `true`)
+You can disable this feature by `ZVM_USE_SYSTEM_CLIPBOARD` option (Default is `true`):
 
 ```zsh
 # Disable system clipboard integration
