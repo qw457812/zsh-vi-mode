@@ -1,9 +1,34 @@
-My fork of `zsh-vi-mode`.
+# My fork of [`zsh-vi-mode`](https://github.com/jeffreytse/zsh-vi-mode) with **system clipboard support**.
 
-To set upstream remote to original zsh-vi-mode repo:
-```sh
-git remote add upstream git@github.com:jeffreytse/zsh-vi-mode.git
+> To set upstream remote to original zsh-vi-mode repo:
+> ```sh
+> git remote add upstream git@github.com:jeffreytse/zsh-vi-mode.git
+> ```
+
+System Clipboard
+--------
+
+Yank/delete/change to clipboard, paste(put) and replace from clipboard.
+
+You can disable this feature by `ZVM_USE_SYSTEM_CLIPBOARD` option (Default is `true`)
+
+```zsh
+# Disable system clipboard integration
+ZVM_USE_SYSTEM_CLIPBOARD=false
 ```
+
+More Built-in Keybindings
+--------
+
+Add popular keybindings like:
+
+- `nmap Y y$`
+- `nmap H 0`
+- `vmap H 0`
+- `nmap L $`
+- `vmap L $`
+
+# README of original repository
 
 <div align="center">
   <a href="https://github.com/jeffreytse/zsh-vi-mode">
