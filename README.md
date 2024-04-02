@@ -5,8 +5,7 @@
 > git remote add upstream git@github.com:jeffreytse/zsh-vi-mode.git
 > ```
 
-System Clipboard
---------
+## System Clipboard
 
 Yank/delete/change to clipboard, paste(put) and replace from clipboard.
 
@@ -17,8 +16,9 @@ You can disable this feature by `ZVM_USE_SYSTEM_CLIPBOARD` option (Default is `t
 ZVM_USE_SYSTEM_CLIPBOARD=false
 ```
 
-More Built-in Keybindings
---------
+Note: `Oh-My-Zsh` built-in lib function [`clipcopy` and `clippaste`](https://github.com/ohmyzsh/ohmyzsh/blob/master/lib/clipboard.zsh) is required.
+
+## More Built-in Keybindings
 
 Add popular keybindings like:
 
@@ -28,7 +28,7 @@ Add popular keybindings like:
 - `nmap L $`
 - `vmap L $`
 
-# README of original repository
+# README of original repo
 
 <div align="center">
   <a href="https://github.com/jeffreytse/zsh-vi-mode">
