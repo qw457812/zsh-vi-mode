@@ -2035,7 +2035,9 @@ function zvm_match_surround() {
     ']') bchar='[';echar=']';;
     '}') bchar='{';echar='}';;
     '>') bchar='<';echar='>';;
-    \'|\"|\`| ) ;;
+    "'") ;;
+    '"') ;;
+    '`') ;;
     *) return;;
   esac
   echo $bchar $echar
@@ -3235,7 +3237,7 @@ function zvm_cursor_style() {
     # sequences as the VT520 terminal. And screen, konsole, alacritty,
     # st and foot implement a superset of VT100 and VT100, they support
     # 256 colors the same way xterm does.
-    xterm*|rxvt*|screen*|tmux*|konsole*|alacritty*|st*|foot*)
+    xterm*|rxvt*|screen*|tmux*|konsole*|alacritty*|st*|foot*|wezterm)
       case $style in
         $ZVM_CURSOR_BLOCK) style='\e[2 q';;
         $ZVM_CURSOR_UNDERLINE) style='\e[4 q';;
