@@ -95,6 +95,11 @@
 #   sd"   Delete "
 #   sr"'  Change " to '
 #
+# 3. 'helix' mode (m->verb->surround):
+#   ms"   Add " for visual selection
+#   md"   Delete "
+#   mr"'  Change " to '
+#
 # How to select surround text object?
 #   vi"   Select the text object inside the quotes
 #   va(   Select the text object including the brackets
@@ -1540,7 +1545,9 @@ function zvm_navigation_handler() {
     count=${keys:0:-1}
     case ${keys: -1} in
       '^') cmd=(zle vi-first-non-blank);;
+      'H') cmd=(zle vi-first-non-blank);;
       '$') cmd=(zle vi-end-of-line);;
+      'L') cmd=(zle vi-end-of-line);;
       ' ') cmd=(zle vi-forward-char);;
       '0') cmd=(zle vi-digit-or-beginning-of-line);;
       'h') cmd=(zle vi-backward-char);;
@@ -1980,8 +1987,9 @@ function zvm_parse_surround_keys() {
   case "${keys}" in
     vS*) action=S; surround=${keys:2};;
     vsa*) action=a; surround=${keys:3};;
+    vms*) action=a; surround=${keys:3};;
     vys*) action=y; surround=${keys:3};;
-    s[dr]*) action=${keys:1:1}; surround=${keys:2};;
+    [sm][dr]*) action=${keys:1:1}; surround=${keys:2};;
     [acd]s*) action=${keys:0:1}; surround=${keys:2};;
     [cdvy][ia]*) action=${keys:0:2}; surround=${keys:2};;
   esac
@@ -3633,6 +3641,13 @@ function zvm_init() {
       for c in sa${s}; do
         zvm_bindkey visual "$c" zvm_change_surround
       done
+    elif [[ $ZVM_VI_SURROUND_BINDKEY == 'helix' ]]; then
+      for c in m{d,r}${s}; do
+        zvm_bindkey vicmd "$c" zvm_change_surround
+      done
+      for c in ms${s}; do
+        zvm_bindkey visual "$c" zvm_change_surround
+      done
     else
       for c in {d,c}s${s}; do
         zvm_bindkey vicmd "$c" zvm_change_surround
@@ -3645,6 +3660,10 @@ function zvm_init() {
 
   # Moving around surrounds
   zvm_bindkey vicmd '%' zvm_move_around_surround
+  if [[ $ZVM_VI_SURROUND_BINDKEY == 'helix' ]]; then
+    zvm_bindkey vicmd 'mm' zvm_move_around_surround
+    zvm_bindkey visual 'mm' zvm_move_around_surround
+  fi
 
   # Fix BACKSPACE was stuck in zsh
   # Since normally '^?' (backspace) is bound to vi-backward-delete-char
@@ -3759,4 +3778,3 @@ case $ZVM_INIT_MODE in
   sourcing) zvm_init;;
   *) precmd_functions+=(zvm_init);;
 esac
-

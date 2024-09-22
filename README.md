@@ -1,6 +1,7 @@
 # My fork of [`zsh-vi-mode`](https://github.com/jeffreytse/zsh-vi-mode) with **system clipboard support**
 
 > To set upstream remote to original zsh-vi-mode repo:
+>
 > ```sh
 > git remote add upstream git@github.com:jeffreytse/zsh-vi-mode.git
 > ```
@@ -23,10 +24,13 @@ Note: `Oh-My-Zsh` built-in lib function [`clipcopy` and `clippaste`](https://git
 Add popular keybindings like:
 
 - `nmap Y y$`
-- `nmap H 0`
-- `vmap H 0`
-- `nmap L $`
-- `vmap L $`
+- `map H 0`
+- `map L $`
+
+## Add Helix Style Surround Keybinding Mode
+
+- `ms`/`md`/`mr`
+- `map mm %`
 
 # README of original repo
 
@@ -401,7 +405,7 @@ Insertion
 Surround
 --------
 
-There are 2 kinds of keybinding mode for surround operating, default is
+There are 3 kinds of keybinding mode for surround operating, default is
 `classic` mode, you can choose the mode by setting `ZVM_VI_SURROUND_BINDKEY`
 option.
 
@@ -417,6 +421,11 @@ option.
 - `sd"`   : Delete `"`
 - `sr"'`  : Change `"` to `'`
 
+ 3. `helix` mode (m->verb->surround)
+- `ms"`   : Add `"` for visual selection
+- `md"`   : Delete `"`
+- `mr"'`  : Change `"` to `'`
+
 Note that key sequences must be pressed in fairly quick succession to avoid a timeout. You may extend this timeout with the [`ZVM_KEYTIMEOUT` option](#readkey-engine).
   
 #### How to select surround text object?
@@ -428,8 +437,8 @@ Then you can do any operation for the selection:
 
 1. Add surrounds for text object
 
-- `vi"` -> `S[` or `sa[` => `"object"` -> `"[object]"`
-- `va"` -> `S[` or `sa[` => `"object"` -> `["object"]`
+- `vi"` -> `S[` or `sa[` or `ms[` => `"object"` -> `"[object]"`
+- `va"` -> `S[` or `sa[` or `ms[` => `"object"` -> `["object"]`
 
 2. Delete/Yank/Change text object
 
